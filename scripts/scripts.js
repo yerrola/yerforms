@@ -1,6 +1,8 @@
 import {
   loadHeader,
   loadFooter,
+  buildBlock,
+  decorateBlock,
   decorateButtons,
   decorateIcons,
   decorateSections,
@@ -59,12 +61,39 @@ async function loadFonts() {
 }
 
 /**
+ * Detects consecutive h3 headings in main and wraps them as an accordion block.
+ * Each h3 becomes the heading cell (cell 0); its following siblings until the
+ * next h3 become the body cell (cell 1) — matching the 2-cell row contract that
+ * accordion's decorate() and buildBlock() both expect.
+ * @param {Element} main
+ */
+function buildAccordionAutoBlock(main) {
+  const h3s = [...main.querySelectorAll(':scope > h3')];
+  if (h3s.length < 2) return;
+  const groups = h3s.map((h3, i) => {
+    const body = [];
+    let sibling = h3.nextElementSibling;
+    while (sibling && sibling !== h3s[i + 1]) {
+      body.push(sibling);
+      sibling = sibling.nextElementSibling;
+    }
+    return { heading: h3, body };
+  });
+  // Place a comment placeholder before moving elements so we keep the insertion point
+  const placeholder = document.createComment('accordion');
+  h3s[0].before(placeholder);
+  const accordion = buildBlock('accordion', groups.map(({ heading, body }) => [heading, { elems: body }]));
+  placeholder.replaceWith(accordion);
+  decorateBlock(accordion);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    buildAccordionAutoBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

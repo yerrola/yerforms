@@ -12,18 +12,19 @@ export default function decorate(block) {
     const content = document.createElement('div');
     content.className = 'accordion-item-content';
 
-    // flatten all cells in the row into a single content stream
-    [...row.children].forEach((cell) => {
+    // First cell → heading label; remaining cells → panel body
+    const [headingCell, ...contentCells] = [...row.children];
+    const headingEl = headingCell?.querySelector(':is(h1,h2,h3,h4,h5,h6)');
+    if (headingEl) {
+      moveInstrumentation(headingEl, summary);
+      summary.textContent = headingEl.textContent.trim();
+    } else {
+      summary.textContent = headingCell?.textContent?.trim() ?? '';
+    }
+
+    contentCells.forEach((cell) => {
       while (cell.firstChild) content.append(cell.firstChild);
     });
-
-    // promote the first heading to the summary title
-    const heading = content.querySelector(':scope > :is(h1,h2,h3,h4,h5,h6)');
-    if (heading) {
-      moveInstrumentation(heading, summary);
-      summary.textContent = heading.textContent.trim();
-      heading.remove();
-    }
 
     details.append(summary, content);
     row.replaceWith(details);
