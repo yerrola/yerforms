@@ -24,7 +24,6 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Accordion Item",
-              "model": "accordion-item",
               "filter": "accordion-item"
             }
           }
@@ -32,20 +31,7 @@
       }
     }
   ],
-  "models": [
-    {
-      "id": "accordion-item",
-      "fields": [
-        {
-          "component": "text",
-          "name": "title",
-          "value": "Accordion Item",
-          "label": "Title",
-          "valueType": "string"
-        }
-      ]
-    }
-  ],
+  "models": [],
   "filters": [
     {
       "id": "accordion",
@@ -56,10 +42,10 @@
     {
       "id": "accordion-item",
       "components": [
+        "title",
         "text",
         "image",
-        "button",
-        "title"
+        "button"
       ]
     }
   ]
