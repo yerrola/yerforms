@@ -37,10 +37,10 @@
   {
     "id": "accordion-item",
     "components": [
+      "title",
       "text",
       "image",
-      "button",
-      "title"
+      "button"
     ]
   },
   {
