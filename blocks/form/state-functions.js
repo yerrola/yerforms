@@ -7,7 +7,7 @@
 async function fetchStatesByCountry(countryCode, globals) {
   try {
     const response = await fetch(
-      `https://your-proxy.io/api/states?country=${countryCode}`,
+      `https://417052-pushrequest.adobeioruntime.net/api/v1/web/io-app/get-states-by-country?country=${countryCode}`,
     );
 
     const data = await response.json();
