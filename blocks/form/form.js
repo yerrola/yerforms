@@ -24,7 +24,6 @@ import {
 } from './util.js';
 import fetchStatesByCountry from './state-functions.js';
 
-export { fetchStatesByCountry };
 
 export const DELAY_MS = 0;
 let captchaField;
