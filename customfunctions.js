@@ -5,9 +5,9 @@ export default {
     title: 'Fetch States by Country',
     params: [
       { name: 'countryCode', type: 'string' },
-      { name: 'globals',     type: 'object', required: false }
+      { name: 'globals', type: 'object', required: false },
     ],
     returnType: 'void',
-    fn: fetchStatesByCountry
-  }
+    fn: fetchStatesByCountry,
+  },
 };
