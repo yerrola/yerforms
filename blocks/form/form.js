@@ -22,9 +22,9 @@ import {
   createRadioOrCheckbox,
   createInput,
 } from './util.js';
+import fetchStatesByCountry from './state-functions.js';
 
-import { fetchStatesByCountry } from './state-functions.js';
-export { fetchStatesByCountry };
+export default { fetchStatesByCountry };
 
 export const DELAY_MS = 0;
 let captchaField;
