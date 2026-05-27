@@ -22,7 +22,6 @@ import {
   createRadioOrCheckbox,
   createInput,
 } from './util.js';
-//import fetchStatesByCountry from './state-functions.js';
 
 export const DELAY_MS = 0;
 let captchaField;
