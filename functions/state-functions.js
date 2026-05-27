@@ -28,4 +28,4 @@ async function fetchStatesByCountry(countryCode, globals) {
   }
 }
 
-export { fetchStatesByCountry };
+export default fetchStatesByCountry;
