@@ -1,3 +1,4 @@
+import fetchStatesByCountry from './state-functions.js';
 /**
  * Get Full Name
  * @name getFullName Concats first name and last name
@@ -43,4 +44,4 @@ function days(endDate, startDate) {
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export { getFullName, days, submitFormArrayToString };
+export { getFullName, days, submitFormArrayToString, fetchStatesByCountry };
