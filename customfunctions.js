@@ -1,4 +1,4 @@
-import { fetchStatesByCountry } from './functions/state-functions.js';
+import fetchStatesByCountry from './functions/state-functions.js';
 
 export default {
   fetchStatesByCountry: {
