@@ -24,7 +24,6 @@ import {
 } from './util.js';
 import fetchStatesByCountry from './state-functions.js';
 
-
 export const DELAY_MS = 0;
 let captchaField;
 let afModule;
@@ -572,3 +571,5 @@ export default async function decorate(block) {
     container.replaceWith(form);
   }
 }
+
+export { fetchStatesByCountry };
