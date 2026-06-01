@@ -16,8 +16,12 @@
       "cards",
       "columns",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "fragment"
 =======
+=======
+      "accordion",
+>>>>>>> 6c8108a (Allowed accordion component)
       "fragment",
       "form",
       "embed-adaptive-form"
