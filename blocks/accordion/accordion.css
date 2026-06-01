@@ -1,18 +1,23 @@
 :root {
-    --accordion-border-color: #e8e8e8;
+    --accordion-border-color: #000;
     --accordion-title-color: inherit;
-    --accordion-title-font-size: var(--heading-font-size-s, 1.25rem);
-    --accordion-title-padding: 1rem 0;
-    --accordion-content-padding: 0 0 1.25rem;
+    --accordion-title-font-size: var(--heading-font-size-s, 1.125rem);
+    --accordion-title-padding: 1.25rem;
+    --accordion-content-padding: 1.25rem;
     --accordion-icon-color: currentcolor;
+    --accordion-icon-size: 0.625rem;
+}
+
+.accordion {
+    border: 2px solid var(--accordion-border-color);
 }
 
 .accordion details {
     border-bottom: 1px solid var(--accordion-border-color);
 }
 
-.accordion details:first-of-type {
-    border-top: 1px solid var(--accordion-border-color);
+.accordion details:last-of-type {
+    border-bottom: none;
 }
 
 .accordion summary.accordion-item-title {
@@ -22,32 +27,45 @@
     padding: var(--accordion-title-padding);
     cursor: pointer;
     font-size: var(--accordion-title-font-size);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--accordion-title-color);
     list-style: none;
     user-select: none;
+    background: #fff;
 }
 
 .accordion summary.accordion-item-title::-webkit-details-marker {
     display: none;
 }
 
+.accordion summary.accordion-item-title:hover {
+    background: #f5f5f5;
+}
+
+.accordion summary.accordion-item-title:focus-visible {
+    outline: 2px solid var(--accordion-border-color);
+    outline-offset: -2px;
+}
+
 .accordion summary.accordion-item-title::after {
-    content: '+';
+    content: '';
     flex-shrink: 0;
     margin-left: 1rem;
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--accordion-icon-color);
+    width: var(--accordion-icon-size);
+    height: var(--accordion-icon-size);
+    border-right: 2px solid var(--accordion-icon-color);
+    border-bottom: 2px solid var(--accordion-icon-color);
+    transform: rotate(45deg) translateY(-25%);
     transition: transform 0.25s ease;
 }
 
 .accordion details[open] > summary.accordion-item-title::after {
-    transform: rotate(45deg);
+    transform: rotate(-135deg) translateY(-25%);
 }
 
 .accordion .accordion-item-content {
     padding: var(--accordion-content-padding);
+    border-top: 1px solid var(--accordion-border-color);
 }
 
 .accordion .accordion-item-content > :first-child {
